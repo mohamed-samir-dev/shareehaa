@@ -28,9 +28,9 @@ export default function TrustedBadge() {
         <p className={styles.heading}>
           موثّق لدى المركز السعودي للتنافسية<br />والأعمال
         </p>
-        <a className={styles.website} href="https://alshariyaa.com" target="_blank" rel="noopener noreferrer">
+        <a className={styles.website} href="https://alshariyahstore.com" target="_blank" rel="noopener noreferrer">
           <span>الموقع:</span>{" "}
-          <strong dir="ltr">https://alshariyaa.com</strong>
+          <strong dir="ltr">https://alshariyahstore.com</strong>
         </a>
         <p className={styles.company}>مؤسسة الشريحة الموثوقة</p>
         <div className={styles.qrFrame}>
@@ -47,7 +47,7 @@ export default function TrustedBadge() {
           <span>الحالة:</span>
           <span className={styles.status}>ساري</span>
         </div>
-        <p className={styles.date}>تاريخ التحقق: <span dir="ltr">4-10-2026</span></p>
+        <p className={styles.date}>تاريخ التحقق: <span dir="ltr">3-11-2026</span></p>
         <a className={styles.verify} href="https://eauthenticate.saudibusiness.gov.sa/inquiry" target="_blank" rel="noopener noreferrer">
           <span>عرض التحقق</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
