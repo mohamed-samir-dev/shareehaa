@@ -222,8 +222,8 @@ snaptr('init','fa4cbf22-9c14-43d5-a2e6-0a1910358f11',{});`}
         <ClientLayout footer={<Footer />} whatsapp={c.whatsapp}>
           {children}
         </ClientLayout>
-        {/* Saudi Business Verify Seal */}
-        <div
+        {/* Saudi Business Verify Seal - Commented Out */}
+        {/* <div
           className="sbc-verify-seal"
           data-token="eFdHY0YrK3Y3RlNuTGtMQWN3V21Jdz09"
           data-position="bottom-left"
@@ -231,7 +231,7 @@ snaptr('init','fa4cbf22-9c14-43d5-a2e6-0a1910358f11',{});`}
         <Script
           src="https://eauthenticate.saudibusiness.gov.sa/EAuthSealApi/seal.js"
           strategy="lazyOnload"
-        />
+        /> */}
         <Analytics />
       </body>
     </html>
