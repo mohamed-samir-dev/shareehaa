@@ -1,19 +1,17 @@
 ﻿import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const isDev = process.env.NODE_ENV === 'development';
-
 // Block known aggressive scrapers that consume Edge bandwidth and CPU
 const BLOCKED_BOT_REGEX = /bytespider|petalbot|ahrefsbot|semrushbot|mj12bot|dotbot|petalbot|dataforseobot|baiduspider|yandexbot|sogou|zoominfo|seekport/i;
 
-// CSP الثابت يُبنى مرة واحدة عند startup
+// CSP for production (no unsafe-eval)
 const STATIC_CSP = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://maps.googleapis.com https://js.sentry-cdn.com https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://*.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://analytics.tiktok.com https://sc-static.net https://tr.snapchat.com https://*.snapchat.com https://*.saudibusiness.gov.sa${isDev ? ' https://va.vercel-scripts.com' : ''}`,
+  "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://js.sentry-cdn.com https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://*.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://analytics.tiktok.com https://sc-static.net https://tr.snapchat.com https://*.snapchat.com https://*.saudibusiness.gov.sa",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.saudibusiness.gov.sa",
-  "img-src 'self' blob: data: https: http://localhost:5000",
+  "img-src 'self' blob: data: https:",
   "font-src 'self' https://fonts.gstatic.com",
-  "connect-src 'self' http://localhost:5000 https://*.vercel.app https://*.railway.app https://*.render.com https://*.onrender.com https://lamsa-simicard-backend.vercel.app https://www.alsharihaa.com https://alsharihaa.com https://alshareehasim.com https://sentry.io https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.sa https://ad.doubleclick.net https://maps.googleapis.com https://nominatim.openstreetmap.org https://analytics.tiktok.com https://*.tiktok.com https://tr.snapchat.com https://*.snapchat.com https://sc-static.net https://*.saudibusiness.gov.sa" + (isDev ? " https://va.vercel-scripts.com" : ""),
+  "connect-src 'self' https://*.vercel.app https://*.railway.app https://*.render.com https://*.onrender.com https://lamsa-simicard-backend.vercel.app https://www.alsharihaa.com https://alsharihaa.com https://alshareehasim.com https://sentry.io https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.sa https://ad.doubleclick.net https://maps.googleapis.com https://nominatim.openstreetmap.org https://analytics.tiktok.com https://*.tiktok.com https://tr.snapchat.com https://*.snapchat.com https://sc-static.net https://*.saudibusiness.gov.sa",
   "frame-src 'self' https://www.googletagmanager.com https://www.google.com https://docs.google.com https://tr.snapchat.com https://*.snapchat.com",
   "object-src 'self'",
   "base-uri 'self'",
@@ -22,7 +20,7 @@ const STATIC_CSP = [
   "upgrade-insecure-requests",
 ].join('; ');
 
-// Security headers ثابتة — تُحسب مرة واحدة
+// Security headers ثابتة
 const SECURITY_HEADERS: [string, string][] = [
   ['X-Content-Type-Options', 'nosniff'],
   ['X-Frame-Options', 'DENY'],
