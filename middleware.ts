@@ -1,4 +1,4 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
@@ -35,7 +35,9 @@ export function middleware(request: NextRequest) {
     !pathname.startsWith('/maintenance') &&
     !pathname.startsWith('/api/')
   ) {
-    return NextResponse.redirect(new URL('/maintenance', request.url));
+    const url = request.nextUrl.clone();
+    url.pathname = '/maintenance';
+    return NextResponse.redirect(url);
   }
 
   const response = NextResponse.next();
