@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -81,12 +81,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    {
-      source: '/((?!_next/static|_next/image|api/|favicon.ico|apple-icon.png|manifest.json|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|css|js|woff2?|ttf|otf|eot|pdf|lottie)).*)',
-      missing: [
-        { type: 'header', key: 'next-router-prefetch' },
-        { type: 'header', key: 'purpose', value: 'prefetch' },
-      ],
-    },
+    '/((?!_next/static|_next/image|api/|favicon.ico|apple-icon.png|manifest.json|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|css|js|woff2?|ttf|otf|eot|pdf|lottie)).*)',
   ],
 };
