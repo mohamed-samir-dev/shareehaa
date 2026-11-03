@@ -35,7 +35,7 @@ export default function TrustedBadge() {
         <p className={styles.company}>مؤسسة الشريحة الموثوقة</p>
         <div className={styles.qrFrame}>
           <div className={styles.qr}>
-            <Image src="/trusted-store-qr.webp" alt="رمز QR لموقع المتجر" width={180} height={180} loading="eager" unoptimized />
+            <Image src="/trusted-store-qr.png" alt="رمز QR لموقع المتجر" width={180} height={180} loading="eager" unoptimized />
             <span className={styles.check} aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
                 <path d="m7 16 6 6L25 9" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
